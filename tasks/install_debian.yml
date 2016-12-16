@@ -7,6 +7,7 @@
   become: yes
   with_items:
     - python-pip
+    - python-setuptools
 
 - name: Rundeck | Install supporting python packages
   pip:
@@ -18,17 +19,7 @@
 
 - name: Rundeck | Add Bintray GPG key for rundeck repo
   apt_key:
-    id: 379CE192D401AB61
     url: https://bintray.com/user/downloadSubjectPublicKey?username=bintray
-  tags:
-    - rundeck
-    - install
-    - packages
-
-- name: Rundeck | Add Rundeck Build GPG key
-  apt_key:
-    id: 85E9DBC74FCB329EDEDADD2E90770E1BE2D1065B
-    url: http://rundeck.org/keys/BUILD-GPG-KEY-Rundeck.org.key
   tags:
     - rundeck
     - install
@@ -47,7 +38,6 @@
   apt:
     name: rundeck
     state: present
-    allow_unauthenticated: yes #FIXME: https://github.com/rundeck/rundeck/issues/93
   notify:
     - systemd daemon-reload
     - restart rundeck
