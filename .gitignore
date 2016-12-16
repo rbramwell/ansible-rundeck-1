@@ -3,3 +3,4 @@
 
 # Vagrant generated files and folders
 .vagrant
+tests/**/*.log
