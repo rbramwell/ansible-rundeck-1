@@ -29,7 +29,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   ## Provision via ansible using the defaults:
   config.vm.provision "ansible" do |ansible|
     ansible.extra_vars = {
-      environment: "vagrant",
       rundeck_domain: "localhost:8068",
       java_packages: [ "openjdk-7-jre-headless" ]
     }

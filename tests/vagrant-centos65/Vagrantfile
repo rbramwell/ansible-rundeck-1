@@ -13,7 +13,7 @@ VAGRANTFILE_API_VERSION = "2"
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   # Every Vagrant virtual environment requires a box to build off of.
-  config.vm.box = "chef/centos-6.5"
+  config.vm.box = "centos/6"
 
   ## identifier
   config.vm.hostname = "vagrant-ansible-rundeck-centos6"
@@ -29,7 +29,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   ## Provision via ansible using the defaults:
   config.vm.provision "ansible" do |ansible|
     ansible.extra_vars = {
-      environment: "vagrant",
       rundeck_domain: "localhost:8065",
       java_packages: [ "java-1.7.0-openjdk" ]
     }

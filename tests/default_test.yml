@@ -2,6 +2,7 @@
 - name: Bootstrap python
   hosts: rundeck-servers
   become: yes
+  strategy: debug
   gather_facts: no
 
   tasks:
@@ -42,7 +43,7 @@
         - libselinux-python
 
   roles: # checked out roles rather than installed via ansible galaxy.
-    - ansible-java-role
+    - role: ansible-java-role # java_packages defined within each vagrant file.
     - role: ansible-rundeck
       rundeck_users:
         - name: sysadmin
